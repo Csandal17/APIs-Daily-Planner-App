@@ -22,11 +22,6 @@ $(".saveButton").on("click", function(){
 
     function hourUpdate(){
         let currentHour = moment().hours();
-        
-        //$(".time-block").each(function() {
-          //  let blockHour = parseInt($(this).attr("id").split("-")[1]);
-            //alert(blockHour);
-       // })
 
         for(let i = 0; i < $(".time-block").length; i++){
             let hour = parseInt($(".time-block")[i].getAttribute("id").split("-")[1])
@@ -48,5 +43,14 @@ $(".saveButton").on("click", function(){
     }
 
     hourUpdate();
+
+    let interval = setInterval(hourUpdate, 15000);
+
+    $("#hour-8 .description").val(localStorage.getItem("hour-8"))
+    $("#hour-9 .description").val(localStorage.getItem("hour-9"))
+    $("#hour-10 .description").val(localStorage.getItem("hour-10"))
+    $("#hour-11 .description").val(localStorage.getItem("hour-11"))
+
+    $("#currentDay").text(moment().format("dddd, MMMM, Do"))
 
 })
